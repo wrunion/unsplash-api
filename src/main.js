@@ -9,6 +9,22 @@ const unsplashApiKey = process.env.UNSPLASH_API_KEY;
 
 $(document).ready(function() {
 
+  $(".clickable-p").click(function() {
+    $('.accordion-item').hide();
+    $(this).siblings("div").show();
+  });
+
+  $("#keyword-button").click(function() {
+    $("#results").empty();
+    const keyword = $("#keyword-input").val();
+    $("#keyword-input").val("");
+  });
+  
+
+
+
+
+
 
 
 
@@ -67,11 +83,7 @@ $(document).ready(function() {
   //   })();
   // });
 
-  /* For later use: creates accordion functionality */
-  // $(".clickable-p").click(function() {
-  //   $('.accordion-item').hide();
-  //   $(this).siblings("div").show();
-  // });
+
 
   /* Lets the user press "enter" to press button */
   $('input').bind('keypress',function(e) {

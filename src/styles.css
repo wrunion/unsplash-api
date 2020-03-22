@@ -33,25 +33,19 @@ input {
   text-align: center;
 }
 
-/* .hidden-start {
+.hidden-start {
   display: none;
-} */
+}
 
 button {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-#cat-button {
+/* #cat-button {
   margin-top: .25em;
   margin-bottom: .5em;
-}
-
-/* REF:
-How to call our custom fonts:
-font-family: 'Raleway', sans-serif;
-font-family: 'Roboto Slab', serif;
-*/
+} */
 
 .green {
   background-color: green;
