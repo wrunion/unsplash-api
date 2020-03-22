@@ -18,8 +18,11 @@ $(document).ready(function() {
     $("#results").empty();
     const keyword = $("#keyword-input").val();
     $("#keyword-input").val("");
+
+    $("#results").append(keyword);
+
   });
-  
+
 
 
 
