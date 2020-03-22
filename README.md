@@ -1,6 +1,6 @@
-# All The API Calls!
+# Unsplash API
 
-#### A single-page JavaScript app built with Webpack, to practice various types of API calls, 2/20/2020
+#### Project to practice image retrieval from Unsplash API, 3/20/2020
 
 #### By **Kent P. McKinney and Winter A. Runion**
 
@@ -13,8 +13,7 @@
 * If we haven't already, install an extension for managing images. I don't think we have one now.  
 
 ### Kent Notes
-  * TODO:
-    * add arrows for clickable paragraphs
+
 
 ### Winter Notes
 

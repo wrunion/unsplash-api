@@ -33,9 +33,9 @@ input {
   text-align: center;
 }
 
-.hidden-start {
+/* .hidden-start {
   display: none;
-}
+} */
 
 button {
   margin-top: 1em;

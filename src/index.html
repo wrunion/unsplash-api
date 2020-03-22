@@ -12,59 +12,27 @@
   <div class="container" id="main">
 
     <header class="text-center">
-      <h1 id="title">Fast Fun Facts!</h1>
-      <h3 id="subtitle" class="grey-text text-muted">Pick a topic below to learn something new!</h3>
+      <h1 id="title">Unsplash API Practice</h1>
+      <h3 id="subtitle" class="grey-text text-muted">An Epicodus project to get the hang of an image API</h3>
     </header>
   
     <div class="container" id="columns">
-    <div class="row justify-content-around row-eq-height display-flex">
+      <div class="row justify-content-around row-eq-height display-flex">
       <div class="col col-6" id="column-1">
-      <section id="topics">
-        <h2 class="subheading">Topics</h2>
-      <div class="text-center" id="center-main">
-        <!-- Bike div  -->
-        <div id="bike-div">
-          <p class="clickable-p" id="bike">Help me find my stolen bike</p>
-          <div class="hidden-start accordion-item" id="bike-input-div">
-            <input type="text" id="bike-input" class="input text-input"  placeholder="Bike description"><br>
-            <button type="button" class="button btn btn-primary" id="bike-button">Find my bike!</button>
+        <section id="topics">
+        <h2 class="subheading">API Calls</h2>
+          <div class="text-center" id="center-main">
+            <!-- Search by keyword  -->
+            <div id="keyword-div">
+              <p class="clickable-p" id="keyword">Call By Keyword</p>
+              <div class="hidden-start accordion-item" id="keyword-input-div">
+                <input type="text" id="keyword-input" class="input text-input"  placeholder="Enter Keyword"><br>
+                <button type="button" class="button btn btn-primary" id="keyword-button">Display image!</button>
+              </div>
+            </div>
           </div>
-        </div>
-        <!-- Weather div  -->
-        <div id="weather-div">
-          <p  class="clickable-p" id="weather">Show me the weather in my city</p>
-          <div class="hidden-start accordion-item" id="weather-input-div">
-            <input type="text" id="weather-input" class="input text-input"  placeholder="City, State" value="Portland, Oregon"><br>
-            <button type="button" class="button btn btn-secondary" id="weather-button">Find my weather!</button>
-          </div>
-        </div>
-        <!-- Photo div  -->
-        <div id="photo-div">
-          <p  class="clickable-p" id="photo">Show me a cool photo</p>
-          <div class="hidden-start accordion-item" id="photo-input-div">
-            <input type="text" id="photo-input" class="input text-input"  placeholder="Photo Keyword" value="Blue Sky"><br>
-            <button type="button" class="button btn btn-primary" id="photo-button">Find my photo!</button>
-          </div>
-        </div>
-        <!-- News div  -->
-        <div id="news-div">
-          <p  class="clickable-p" id="news">Show me an interesting news article</p>
-          <div class="hidden-start accordion-item" id="news-input-div">
-            <input type="text" id="news-input" class="input text-input"  placeholder="Article Keyword" value="Easter"><br>
-            <button type="button" class="button btn btn-secondary" id="news-button">Find a news article!</button>
-          </div>
-        </div>
-        <!-- Pokemon div  -->
-        <div id="poke-div">
-          <p class="clickable-p" id="poke">Show me a pokemon's moves!</p>
-          <div class="hidden-start accordion-item" id="poke-input-div">
-            <input type="text" id="poke-input" class="input text-input"  placeholder="pikachu" value="Pikachu"><br>
-            <button type="button" class="button btn btn-primary" id="poke-button">Get the moves!</button>
-          </div>
-        </div>
+        </section>
       </div>
-    </section>
-    </div>
 
     <!-- Results  -->
     <div class="col col-6" id="column-2">
@@ -76,37 +44,6 @@
 
         </ul>
       </div>
-      <!-- Bike  -->
-      <div id="bike-results" class="results-div">
-        <ul class="results-ul">
-
-        </ul>
-      </div>
-      <!-- Weather  -->
-      <div id="weather-results" class="results-div">
-        <ul class="results-ul">
-
-        </ul>
-      </div>
-      <!-- News  -->
-      <div id="news-results" class="results-div">
-        <ul class="results-ul">
-
-        </ul>
-      </div>
-      <!-- Starwars  -->
-      <div id="starwars-results" class="results-div">
-        <ul class="results-ul">
-
-        </ul>
-      </div>
-      <!-- Pokemon  -->
-      <div id="pokemon-results" class="results-div">
-        <ul class="results-ul">
-
-        </ul>
-      </div>
-    </div>
   </div>
 </div> <!--Columns container-->
 </div> <!--#main-->
