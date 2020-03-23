@@ -2,8 +2,13 @@
 /* eslint-disable no-unused-vars */
 import './styles.css';
 import $ from 'jquery';
+// import capitalizeString from './operations';
 
-const unsplashAccessKey = "JQazSjOow5MmLIMN_e0XQ3abqYxckGbYfSykhZ8Hnfo";
+const unsplashAccessKey = "YOUR_UNSPLASH_ACCESS_KEY_HERE";
+
+function capitalizeString(str) {
+  return str.charAt(0).toUpperCase() + str.substring(1);
+}
 
 /* REFERENCE: https://unsplash.com/developers */
 
@@ -14,24 +19,10 @@ $(document).ready(function() {
     $(this).siblings("div").show();
   });
 
-  // $("#keyword-button").click(function() {
-  //   $("#results").empty();
-  //   const keyword = $("#keyword-input").val().toLowerCase();
-  //   $("#keyword-input").val("");
-
-  //   asyncApiCall();
-  //   async function asyncApiCall() {
-  //     try {
-  //       let response = await fetch(`https://api.unsplash.com/search/photos?query=${keyword}?client_id=${unsplashAccessKey}`);
-       
-  // });
-
-  /* FOR REFERENCE */ 
-
   $("#keyword-button").click(function() {
     $('#results').empty();
     const keyword = $("#keyword-input").val().toLowerCase();
-
+    const displayKeyword = capitalizeString(keyword);
     (async () => {
       try {
         let response = await fetch(`https://api.unsplash.com/search/photos?query=${keyword}&client_id=${unsplashAccessKey}`);
@@ -49,32 +40,19 @@ $(document).ready(function() {
     })();
 
     const showPhoto = function(data) {
-        // const firstImage = response.results[0];
-        // let html = '';
-        // const url = response.results[0].urls.regular;
-        // const alt = response.results[0].alt_description;
-        // const author = response.results[0].user.name;
-    
-        if (data && data.results && data.results[0]) {
+      if (data && data.results && data.results[0]) {
         const firstImage = data.results[0];
-        const url = firstImage.urls.regular;
-        const author = firstImage.user.name;
-        const alt_description = firstImage.alt_description;
+        // const url = firstImage.urls.regular;
+        // const author = firstImage.user.name;
+        // const alt_description = firstImage.alt_description;
 
         let htmlContent = `<figure>
           <img src="${firstImage.urls.regular}" alt="${firstImage.alt_description}" class="img-fluid">
-          <figcaption>${keyword} by ${firstImage.user.name}</figcaption>
+          <figcaption>${displayKeyword} by ${firstImage.user.name}</figcaption>
         </figure>`;
         $("#results").append(htmlContent);
-        // } else {
-        //   htmlContent = `<div class="error-no-image">No images available</div>`;
-        // }
-
-        // console.log(`Photo taken by ${author}.
-        // Alt description: ${alt}.
-        // Url: ${url}`);
       } else {
-        console.log(`There was an error handling your request. Please check your inputs and try again`);
+        $("#results").append(`There was an error handling your request. Please check your inputs and try again!`);
       }
     }; 
   });
