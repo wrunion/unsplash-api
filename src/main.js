@@ -3,9 +3,9 @@
 import './styles.css';
 import $ from 'jquery';
 
-/* REFERENCE: https://unsplash.com/developers */
+const unsplashAccessKey = "JQazSjOow5MmLIMN_e0XQ3abqYxckGbYfSykhZ8Hnfo";
 
-const unsplashApiKey = process.env.UNSPLASH_API_KEY;
+/* REFERENCE: https://unsplash.com/developers */
 
 $(document).ready(function() {
 
@@ -14,78 +14,94 @@ $(document).ready(function() {
     $(this).siblings("div").show();
   });
 
-  $("#keyword-button").click(function() {
-    $("#results").empty();
-    const keyword = $("#keyword-input").val();
-    $("#keyword-input").val("");
+  // $("#keyword-button").click(function() {
+  //   $("#results").empty();
+  //   const keyword = $("#keyword-input").val().toLowerCase();
+  //   $("#keyword-input").val("");
 
-    $("#results").append(keyword);
-
-  });
-
-
-
-
-
-
-
-
-
-  /* FOR REFERENCE */
-  // $("#news-button").click(function() {
-  //   $('#results').text("");
-  //   const keyword = $("#news-input").val();
-  //   (async () => {
+  //   asyncApiCall();
+  //   async function asyncApiCall() {
   //     try {
-  //       // let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OW_API_KEY}`);
-  //       let response = await fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${keyword}fq=headline.search:("${keyword}")&api-key=${nytApiKey}`);
-
-  //       let jsonifiedResponse;
-  //       if (response.ok && response.status === 200) {
-  //         jsonifiedResponse = await response.json();
-  //         console.log(jsonifiedResponse);
-  //       } else {
-  //         jsonifiedResponse = false;
-  //       }
-  //       $('#results').append(jsonifiedResponse.response.docs[5].headline.main);
-  //     } catch(e) {
-  //       alert(e.message);
-  //     }
-  //   })();
+  //       let response = await fetch(`https://api.unsplash.com/search/photos?query=${keyword}?client_id=${unsplashAccessKey}`);
+       
   // });
 
   /* FOR REFERENCE */ 
 
-  // $("#poke-button").click(function() {
-  //   $('#results').text("");
-  //   $('#results').empty();
-  //   const poke = $("#poke-input").val().toLowerCase();
-  //   (async () => {
-  //     try {
-  //       let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`);
-  //       let jsonifiedResponse;
-  //       if (response.ok && response.status === 200) {
-  //         jsonifiedResponse = await response.json();
-  //       } else {
-  //         jsonifiedResponse = false;
-  //       }
-  //       let pokemon = jsonifiedResponse;
-  //       let moves = pokemon.moves;
-  //       if (moves) {
-  //         for (let move of moves) {
-  //           $('#results').append(`<div>${move.move.name}</div>`);
-  //         }
-  //       }
-  //       else {
-  //         $('#results').append(`Couldn't find a pokemon named '${poke}'. Please check spelling and try again!`);
-  //       }
-        
-  //     } catch(e) {
-  //       alert(e.message);
-  //     }
-  //   })();
-  // });
+  $("#keyword-button").click(function() {
+    $('#results').empty();
+    const keyword = $("#keyword-input").val().toLowerCase();
 
+    (async () => {
+      try {
+        let response = await fetch(`https://api.unsplash.com/search/photos?query=${keyword}&client_id=${unsplashAccessKey}`);
+        let parsedResponse;
+        if (response.ok && response.status === 200) {
+          parsedResponse = await response.json();
+        } else {
+          parsedResponse = false;
+        }
+        showPhoto(parsedResponse);
+      } catch(e) {
+        showPhoto(false);
+        console.log(e.message);
+      }
+    })();
+
+    const showPhoto = function(data) {
+        // const firstImage = response.results[0];
+        // let html = '';
+        // const url = response.results[0].urls.regular;
+        // const alt = response.results[0].alt_description;
+        // const author = response.results[0].user.name;
+    
+        if (data && data.results && data.results[0]) {
+        const firstImage = data.results[0];
+        const url = firstImage.urls.regular;
+        const author = firstImage.user.name;
+        const alt_description = firstImage.alt_description;
+
+        let htmlContent = `<figure>
+          <img src="${firstImage.urls.regular}" alt="${firstImage.alt_description}" class="img-fluid">
+          <figcaption>${keyword} by ${firstImage.user.name}</figcaption>
+        </figure>`;
+        $("#results").append(htmlContent);
+        // } else {
+        //   htmlContent = `<div class="error-no-image">No images available</div>`;
+        // }
+
+        // console.log(`Photo taken by ${author}.
+        // Alt description: ${alt}.
+        // Url: ${url}`);
+      } else {
+        console.log(`There was an error handling your request. Please check your inputs and try again`);
+      }
+    }; 
+  });
+
+
+  // (async () => {
+  //   try {
+  //     let response = await fetch(`https://api.unsplash.com/search/photos?query=${keyword}`);
+  //     let jsonifiedResponse;
+  //     if (response.ok && response.status === 200) {
+  //       jsonifiedResponse = await response.json();
+  //     } else {
+  //       jsonifiedResponse = false;
+  //     }
+  //     let myResult = jsonifiedResponse;
+  //     if (myResult) {
+  //       console.log(myResult);
+  //     }
+  //     else {
+  //       console.log('error this is else');
+  //       // $('#results').append(`Couldn't find a pokemon named '${poke}'. Please check spelling and try again!`);
+  //     }
+        
+  //   } catch(e) {
+  //     alert(e.message);
+  //   }
+  // })();
 
 
   /* Lets the user press "enter" to press button */
